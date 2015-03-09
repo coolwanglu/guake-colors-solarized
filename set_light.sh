@@ -18,3 +18,4 @@ PROFILE=${1:-Default}
 gconftool-2 -s -t string /apps/guake/style/background/color `cat $dir/colors/$theme/base3`
 gconftool-2 -s -t string /apps/guake/style/font/color `cat $dir/colors/$theme/base00`
 gconftool-2 -s -t string /apps/guake/style/font/palette `cat $dir/colors/$theme/palette`
+gconftool-2 -s -t int /apps/guake/style/background/transparency `cat transparency_level`
