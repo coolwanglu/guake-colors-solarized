@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 default='solarized'
-dir=`dirname $0`
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE"
+done
+dir="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 if [ -d $dir/colors/$1 ]; then
   theme=$1
