@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
-dir=`dirname $0`
+dir=$(dirname $0)
 
 PROFILE=${1:-Default}
 
 #######
 # for guake
-gconftool-2 -s -t string /apps/guake/style/background/color `cat $dir/colors/base3`
-gconftool-2 -s -t string /apps/guake/style/font/color `cat $dir/colors/base00`
-gconftool-2 -s -t string /apps/guake/style/font/palette `cat $dir/colors/palette`
+PALETTE_STR=$(cat ./colors/palette_light)
+PALETTE_STR_GCONF="\"${PALETTE_STR}\""
+dconf write "/apps/guake/style/font/palette" $PALETTE_STR_GCONF
+
+# gbase3
+# gbase00
