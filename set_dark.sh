@@ -16,7 +16,6 @@ fi
 
 PROFILE=${1:-Default}
 
-PALETTE_STR=$(cat ./colors/palette_dark)
+PALETTE_STR=$(cat $dir/colors/$theme/palette_dark)
 PALETTE_STR_GCONF="\"${PALETTE_STR}\""
 dconf write "/apps/guake/style/font/palette" $PALETTE_STR_GCONF
->>>>>>> c854ea03229b902ef24d05b4484a9f82019c0388
