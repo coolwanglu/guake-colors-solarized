@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+
 default='solarized'
-dir=`dirname $0`
+dir=$(dirname $0)
 
 if [ -d $dir/colors/$1 ]; then
   theme=$1
@@ -15,6 +16,6 @@ fi
 
 PROFILE=${1:-Default}
 
-gconftool-2 -s -t string /apps/guake/style/background/color `cat $dir/colors/$theme/base03`
-gconftool-2 -s -t string /apps/guake/style/font/color `cat $dir/colors/$theme/base0`
-gconftool-2 -s -t string /apps/guake/style/font/palette `cat $dir/colors/$theme/palette`
+PALETTE_STR=$(cat $dir/colors/$theme/palette_dark)
+PALETTE_STR_GCONF="\"${PALETTE_STR}\""
+dconf write "/apps/guake/style/font/palette" $PALETTE_STR_GCONF
